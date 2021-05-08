@@ -1,5 +1,8 @@
 # AlphaAi internship tasks
 
+## NAME -VATSAL CHATURVEDI
+## EMAIL - 500063454@stu.upes.ac.in
+
 ### *All the non techical question along with their answers are in file Non-technical Questions.txt
 
 ### Task 2  Image Segmentation and Crowd Density Estimator
