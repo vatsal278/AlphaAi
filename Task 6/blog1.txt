@@ -1,0 +1,132 @@
+Machine Learning | What’s Inside the Box?
+Randy Lao
+Randy Lao
+
+Oct 14, 2017·11 min read
+
+
+My grandma always said machine learning was like a box of chocolates. You never know what you’re going to get. Sorry grandma, not today! We’re definitely going to know what chocolates we’re getting (I hope I get Dark Chocolate).
+Just like opening a box of chocolates, you shouldn’t be afraid of knowing what is inside a Machine Learning algorithm. They’re harmless, trust me. If you haven’t checked out my first article about the high-level use of machine learning, click here.
+Overview
+With big loads of data everywhere, the power in deriving meaning behind all of it relies on the use of Machine Learning. Machine learning algorithms are used to learn the structure of the data. Is there structure in the data? Can we learn the structure from the data? And if we can, we can then use it for prediction , description, compression, and what not.
+Each machine learning algorithm/model has its own strengths and weaknesses. A problem that resides in the machine learning domain is the concept of understanding the details in the algorithms being used and its prediction accuracy. Some models are easier to interpret/understand but lack prediction power. Whereas other models may have really accurate predictions but lack interpretability.
+This article will not go into detail on what goes inside each algorithm, but will cover the high-level overview of what each machine learning algorithm does. I will also provide you easy code snippets on how to program it in Python.
+If there is anything that you should LEARN from reading this article, it is this:
+“Machine learning is using data to answer questions” — Yufeng Guo
+But before we learn what some of the algorithms do, lets review some important terminologies commonly used in Machine Learning:
+Terminology
+Training Data: refers to using our data to find patterns between the variables. An algorithm, or formula, is then computed from this pattern.
+Model: refers to our machine learning algorithm/formula. This algorithm is then used for our prediction
+Prediction: refers to answering our questions from the data.
+Independent/Predictor Variable(s): are the variables used to help predict your dependent variable.
+Dependent/Explanatory Variable: it is the variable you want to explain or predict.
+How Machine Learning Algorithms Work
+
+You get your data
+Find Patterns in the Data (Training)
+Create a model (algorithm) out of the pattern
+Use model to predict our answers on new data
+Update the model with new data
+Okay, okay… I know you’re eager to learn how these formulas work. Say no more! Let’s get down to business!
+
+Let’s take a look at seven common machine learning algorithms. We’ll call this theMachine Learning 7
+1. Linear Regression (Blue Formula)
+This is the go to method for regression problems. The linear regression algorithm is used to see a relationship between the predictor variables and explanatory variable. This relationship is either a positive, negative, or neutral change between the variables. In its simplest form, it attempts to fit a straight line to your training data. This line can then be used as reference to predict future data.
+Imagine you’re an ice cream man. Your intuition from previous sales was that you found yourself selling more ice cream when it was hotter outside. Now you want to know how much to sell your ice cream at a certain temperature. We can use linear regression to predict just that! The linear regression algorithm is represented as a formula: y = mx + b. Where “y” is your dependent variable (ice cream sales) and “x” is your independent variable (temperature).
+
+So we’ll plot a line that best fits the training data, which captures the general pattern of the data. In the context of our ice cream problem, we can then use this line (or model/algorithm) as a reference to predict the value of the ice cream given a certain temperature.
+Example: If the temperature is about 75 degrees outside, you would then sell the ice cream at about $150. This shows that as temperature increases, so does ice cream sales.
+Strengths: Linear regression is very fast to implement, easy to understand, and is less prone to overfitting. It’s a great go-to algorithm for using it as your first model and works really on linear relationships.
+Weaknesses: Linear regression performs poorly when there are non-linear relationships. It is hard to be used on complex data sets.
+# Python code for Linear Regression 
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X,y)
+predicted = model.predict(z)
+
+2. Logistic Regression (Green Formula)
+Go to method for classification method and is commonly used for interpretability. It is commonly used to predict the probability of an event occurring. Logistic regression is an algorithm borrowed from statistics and uses a logic/sigmoid function (Purple Formula) to transform its output, making it either 0 or 1.
+Example: Imagine you’re a banker and you wanted a machine learning algorithm to predict the probability of a person paying you back the money. They will either: pay you back or not pay you back. Since a probability is within the range of (0–1), using a linear regression algorithm wouldn’t make sense here because the line would extend pass 0 and 1. You can’t have a probability that’s negative or above 1.
+
+Strengths: Similar to its sister, linear regression, logistic regression is easy to interpret and is less prone to overfitting. It’s fast to implement as well and has surprisingly great accuracy for its simple design.
+Weaknesses: This algorithm performs poorly where there are multiple or non-linear decision boundaries or capturing complex relationships.
+# Python code for Logistic Regression 
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X,y)
+predicted = model.predict(z)
+3. K-Nearest Neighbors (KNN)
+What’s up my neighbors! K-Nearest Neighbors algorithm is one of the simplest classification technique. It’s an algorithm that classifies objects based on its closest training example in its featured space. The K in K-Nearest Neighbors refers to the number of nearest neighbors the model will used for its prediction.
+How it Works:
+Assign K a value (preferably a small odd number)
+Find closest number of K points
+Assign the new point from the majority of classes
+
+
+Example:
+Looking at our unknown person in the graph, where would you classify him under as: Dothraki or Westerosian?
+We’ll be assigning K=5. So in this case, we’ll look at the 5 closest neighbors to our unassigned person and assign him to the majority class. If you picked Dothraki, then you are correct! Out of the 5 neighbors, 4 of them were Dothrakis and 1 was Westerosian.
+Strengths: This algorithm is good for large data, it learns well on complex patterns, it can detect linear or non-linear distributed data, and is robust to noisy training data. Good at dealing with low dimensional data.
+Weaknesses: It’s hard to find the right K-value, bad for higher dimensional data, and requires a lot of computation when fitting larger amounts of features. It’s expensive and slow. For interpretability and intelligence DON’T USE KNN.
+# Python code for K-Nearest Neighbors
+from sklearn.neighbors import NearestNeighbors
+model = NearestNeighbors(n_neighbors=5)
+model.fit(X,y)
+predicted = model.predict(z)
+4. Support Vector Machine (SVM)
+For some reason this algorithm always sounded intimidating to me. If you want to compare extreme values in your dataset for classification problems, SVM algorithm is the way to go. It draws a decision boundary, also known as a hyperplane, that best segregates the two classes from one another. Or you can think of it as an algorithm that looks for some pattern in the data points and find a best line that can separate the pattern(s).
+Let’s break down the the terms in this SVM algorithm to have a better sense of what it is trying to do:
+S — Support refers to the extreme values/points in your dataset.
+V — Vector refers to the values/points in dataset / feature space.
+M — Machine refers to the machine learning algorithm that focuses on the support vectors to classify groups of data. This algorithm literally only focuses on the extreme points and ignores the rest of the data.
+
+Example: Let’s say you want to create an algorithm that can classify whether an animal is a cat or dog based on ear and snout features.
+This algorithm only focuses on the extreme values (support vectors) to create this decision line, which are the two cats and one dog circled in the graph.
+A line is then drawn in between the two classes. In SVM term, this line is known as the hyperplane. Anything to the left of the hyperplane is a cat and anything to the right of it is a dog.
+Strengths: This model is good for classification problems and can model very complex dimensions. It’s also good to model non-linear relationships.
+Weaknesses: It’s hard to interpret and requires a lot of memory and processing power. It also does not provide probability estimations and is sensitive to outliers.
+# Python code for Support Vector Machines
+from sklearn.svm import SVC
+model = SVC(kernel=’rbf’)
+model.fit(X,y)
+predicted = model.predict(z)
+5. Decision Tree
+A decision tree is made up of nodes. Each node represents a question about the data. And the branches from each node represents the possible answers. Visually, this algorithm is very easy to understand. With every decision tree, there is always a root node and this represents the top most question. The order of importance for each feature is represented in a top-down approach of the nodes. The higher the node the more important its property/feature.
+
+Strengths: The decision tree is a very easy to understand and visualize. It’s fast to to learn, robust to outliers, and can work on non-linear relationships. This model is commonly used to understand what features are being used, such as medical diagnosis and credit risk analysis. It also has a built in feature selection.
+Weaknesses: The biggest drawback of a single decision tree is that it loses its predictive power from not collecting other overlapping features. A downside to decision trees is the possibility of building a complex tree which do not generalize well to future data. hard to interpret, duplication is possible. Decision trees can be unstable because it naturally has low variance of features.
+# Python code for Decision Tree
+from sklearn.tree import DecisionTreeClassifier
+model = DecisionTreeClassifer()
+model.fit(X,y)
+predicted = model.predict(z)
+6. Random Forest
+One of the most used and powerful supervised machine learning algorithm for prediction accuracy. Think of this algorithm as a bunch of decision trees, instead of one single tree like the Decision Tree algorithm. This grouping of algorithms, in this case decision trees, is called an Ensemble Method. It’s accurate performance is generated by averaging the many decision trees together. Random Forest is naturally hard to interpret because of the various combinations of decision trees it uses. But if you want a model that is a predictive powerhouse, use this algorithm!
+
+Strengths: Random Forest is known for its great accuracy. It has automatic feature selection, which identifies what features are most important. It can handle missing data and imbalanced classes and generalizes well.
+Weaknesses: A drawback to random forest is that you have very little control on what goes inside this algorithm. It’s hard to interpret and won’t perform well if given a set of bad features.
+# Python code for Random Forest
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier()
+model.fit(X, y)
+predicted = model.predict(z)
+7. Gradient Boosting Machine (GBM)
+Gradient Boost Machine is another type of Ensemble Method, where it aggregates many models together and takes a consensus of their predictions. A simple key concept to remember about this algorithm is this: it trains a weak model into a stronger model. Try not to over-complicate things here.
+How It Works: You’re first model is considered the “weak” model. You train it and find out what errors your first model produced. The second tree would then use these errors from the first tree to re-calibrate its algorithm and emphasis more priority to the errors. The third tree would repeat this process and see what errors the second tree made. And this would just repeat. Essentially, this model is building a team of models that works together to solve their weaknesses.
+
+Strengths: Gradient Boosting Machines are very good to use for predictions. It’s one of the best off-the-shelf algorithm used for great accuracy with decent run time and memory usage.
+Weaknesses: Like other ensemble methods, GBM lacks interpretability. It is not well suited for handling large dimensions/features because it could take a lot of training process and computation. So a balance of computational cost and accuracy is a concern.
+Different Ways to Evaluate Model Performance
+Predictive Accuracy: How many does it get right?
+Speed: How fast does it take for the model to deploy?
+Scalability: Can the model handle large datasets?
+Robustness: How well does the model handle outliers/missing values?
+Interpretability: Is the model easy to understand?
+
+How to Improve your Learning Algorithm?
+Get more training examples
+Try smaller set of features (take some features away or select some good ones to prevent overfitting)
+Try getting more features (could be time consuming for huge projects)
+Final Note
+There are more machine learning algorithms (chocolates) out there. This article only covered a few common ones that highlights what goes on behind the scenes in these “black-boxes”. A key note to keep in mind is that there is no best machine learning algorithm. Each algorithm is different and is tailored based on the data available, the context of the domain problem, and other external/internal constraints. If you’re asking yourself, “So… which model do I use?”, then the answer to that question would be to try as many as you can and then evaluate what works best for you.
+Hopefully you guys learned something! If there is anything that you guys would like to add to this article, feel free to leave a message and don’t hesitate! Any sort of feedback is truly appreciated. Don’t be afraid to share this! Thanks!
