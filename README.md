@@ -3,7 +3,9 @@
 ## NAME -VATSAL CHATURVEDI
 ## EMAIL - 500063454@stu.upes.ac.in
 
-### *All the non techical question along with their answers are in file Non-technical Questions.txt
+
+### All the non techical question along with their answers are in file Non-technical Questions.txt
+
 
 ### Task 2  Image Segmentation and Crowd Density Estimator
 Link for the dataset is https://www.kaggle.com/fmena14/crowd-counting
